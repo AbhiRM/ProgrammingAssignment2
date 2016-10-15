@@ -7,21 +7,30 @@
 # First Function: This function creates a special "matrix" object that can cache its inverse
 
 makeCacheMatrix <- function(x= matrix()) {
+
+# Initialize objects  
         
         InvertedMatrix <- NULL
-        
+# Set the matrix    
         setMatrix <- function(y) {
                 
                 x <<- y
                 InvertedMatrix <<- NULL
                 }
+# Retrieve the matrix
         
         getMatrix <- function() x
+
+# Set the inverted matrix
         
         setInvertedMatrix <- function(Invert) InvertedMatrix <<- Invert 
-        
-        getInvertedMatrix <- function() InvertedMatrix
 
+# Retrieve the inverted matrix   
+
+        getInvertedMatrix <- function() InvertedMatrix
+        
+# create a new object by returning the list
+        
         list(setMatrix= setMatrix,
              getMatrix= getMatrix,
              setInvertedMatrix= setInvertedMatrix,
@@ -34,6 +43,8 @@ makeCacheMatrix <- function(x= matrix()) {
 
 cacheSolve <- function(x,...) {
 
+# Return a matrix that is inverse of x 
+        
         InvertedMatrix <- x$getInvertedMatrix()
 
 #Check whether cache is available and return it if available
