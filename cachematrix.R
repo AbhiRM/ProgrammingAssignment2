@@ -1,8 +1,8 @@
-# Caching the complex computations could benefits whenever they need to be used repeatedly 
+# Caching the complex computations could benefit whenever they need to be used repeatedly, 
 # rather than computing them again and again. Here we are creating two functions: 
 # "makeCacheMatrix" and "cacheSolve" which will enable us to compute inverse of an invertible matrix 
-# and then cache it in the inverse needs to be used again. 
-# Assumption is that given matrix is always invertible 
+# and then cache that inverse in case it needs to be used again. 
+# Assumption is that given matrix is always invertible. 
 
 # First Function: This function creates a special "matrix" object that can cache its inverse
 
@@ -33,19 +33,19 @@ makeCacheMatrix <- function(x= matrix()) {
 # then the cachesolve should retrieve the inverse from the cache.
 
 cacheSolve <- function(x,...) {
-        
+
         InvertedMatrix <- x$getInvertedMatrix()
+
+#Check whether cache is available and return it if available
         
         if(!is.null(InvertedMatrix)) {
                 message("fetching cached data")
                 return (InvertedMatrix)
         }
-        
+# Compute inverse if cache is not available        
         else {
+
                 M <- x$getMatrix()
-                
-                # perfrom inverse operations
-                
                 InvertedMatrix<- solve(M,...)
                 x$setInvertedMatrix(InvertedMatrix)
                 InvertedMatrix
